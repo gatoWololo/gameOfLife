@@ -2,18 +2,26 @@ module Main where
 {- |
    Conway's game of life written in Haskell. From random 1's and 0's
 -}
-import Life
-import qualified Data.Vector as V
+
 import System.Environment(getArgs)
 import System.Random
+import Data.Array.Repa
+import Grid
 
 main :: IO()
 main = do
+  randStream <-  makeRandList
+  let randList = take  (gridSize*gridSize) randStream
+      --We have created our grid of randomly assinged life.
+      grid = fromListUnboxed lifeGrid randList
+  putStrLn $ printArray grid
+  putStrLn . show $ findNumber grid (0,0)
+
+
+
+{- | Creates Lazy list of random 1's and 0's. -}
+makeRandList:: IO [Int]
+makeRandList = do
   g <- newStdGen
-  grid <- getVector g
-  putStrLn $ show grid
-
-
-getVector:: StdGen -> IO (V.Vector (V.Vector Life))
-getVector gen = return $ V.generate 10  (\g -> V.fromList . take 10 $ (randoms gen :: [Life]))
+  return $ randomRs (0,1) g
 

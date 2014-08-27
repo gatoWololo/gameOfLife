@@ -4,7 +4,11 @@ File defining how the Life data works as well as it's random instance
 -}
 import System.Random
 
-data Life = Alive | Dead deriving (Show, Eq, Enum,Bounded)
+data Life = Alive | Dead deriving (Eq, Enum,Bounded)
+
+instance Show Life where
+    show Alive = "⬛"
+    show Dead = "⬜"
 
 instance Random Life where
     randomR (a,b) g =
