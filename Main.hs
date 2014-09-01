@@ -11,14 +11,15 @@ import Control.Concurrent(threadDelay)
 import Grid(printArray,gridSize,Array2D)
 import Life(getInitGrid,nextLife)
 import System.Console.ANSI(clearScreen)
+import Control.Monad (forever)
 
 main :: IO()
 main = do
-  n:[] <- getArgs --No error :P
+  n:[] <- getArgs --No error Checking...
   let timesN = read n :: Int
   grid <- getInitGrid gridSize
+  hSetBuffering stdout NoBuffering
   iterateN grid timesN
-
 
 -- | Given a number as a command Line argument will iterate that many times through grids printing them.
 iterateN :: Array2D -> Int -> IO ()
@@ -31,7 +32,5 @@ iterateN grid n = do
 toScreen :: Array2D -> IO ()
 toScreen grid = do
   clearScreen
-  hFlush stdout
   putStrLn $ printArray grid
-  hFlush stdout
   threadDelay 1000000

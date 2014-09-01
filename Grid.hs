@@ -1,11 +1,11 @@
 -- | General functions for array operations.
-module Grid (grid2D,printArray,findNumber,Array2D,getElem,gridSize) where
+module Grid (grid2D,printArray,findNumber,Array2D,getElem,gridSize,getIntArray) where
 import Data.Array.Repa
 
 type Array2D = Array U DIM2 Int
 type Coordinate = (Int,Int)
 
-gridSize = 50
+gridSize = 100
 
 grid2D = Z :. gridSize :. gridSize :: DIM2
 
@@ -38,4 +38,6 @@ filterNeighbors xs = filter (\(x,y) -> check x && check y) xs
 getSum:: Array2D -> [Coordinate] -> Int
 getSum grid list = foldr (\x -> ((getElem grid x) +)) 0 list
 
-
+getIntArray :: Array2D -> [Int]
+getIntArray grid = [getElem grid (x,y) | x <- [0..n] , y <- [0..n]]
+    where n = gridSize -1
