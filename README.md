@@ -1,17 +1,16 @@
-Simple Conway's game of life implementation in Haskell.
-By:
+Conway's game of life implementation in Haskell.
+By: Chava Rea
 
-The main idea is now implemented. There are 2 main executable files.
-Main.hs runs a text based version through a terminal, I believe it will compile
-with only the libraries in the Haskell Platform.
+Conway's Game Of Life, cellular autamaton implemented in haskell using Repa mutable arrays
+to represent data. OpenGL and Glut binding for graphics implementations.
 
-![](images/text.png "Text Based Version")
+![](images/gameOfLife2.png "PRogram Running:")
 
-AnimatedMain is a graphical (Much Cooler) Implementation using OpenGl and GLFW-b
-for rendering.
+Arrow Keys, mouse, space bar and shift work to move about the world. Note mouse camera
+rotation still needs some work.
 
-![](images/animated.png "OpenGL Animated Version")
+Compile with ghc -iGraphics/ Main.hs
 
-Still Much of the code to be Cleaned up and probably better ways to write. But I'm
-pretty happy with the Results at this point.
+Much optimization to be done!
+
 
