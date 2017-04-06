@@ -3,3 +3,5 @@
 #Haskell object files and interface files.
 *.hi
 *.o
+# Stack
+.stack-work
