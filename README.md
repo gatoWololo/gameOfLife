@@ -1,5 +1,4 @@
 Conway's game of life implementation in Haskell.
-By: Chava Rea
 
 Conway's Game Of Life, cellular autamaton implemented in haskell using Repa mutable arrays
 to represent data. OpenGL and Glut binding for graphics implementations.
@@ -9,7 +8,12 @@ to represent data. OpenGL and Glut binding for graphics implementations.
 Arrow Keys, mouse, space bar and shift work to move about the world. Note mouse camera
 rotation still needs some work.
 
-Compile with ghc -iGraphics/ Main.hs
+Uses stack. Usage:
+
+    stack build # compile
+    stack exec GameOfLife-exe # run
+
+Warning! Glut bindings take a long time to compile.
 
 Much optimization to be done!
 
